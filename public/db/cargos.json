@@ -1,0 +1,37 @@
+[
+  {
+    "key": "1",
+    "customer": "Coca-Cola",
+    "cargo": "Чёрный порошок",
+    "departure": "Москва",
+    "arrival": "Рязань"
+  },
+  {
+    "key": "2",
+    "customer": "Газпром",
+    "cargo": "Жидкий азот",
+    "departure": "Новый Уренгой",
+    "arrival": "Старый Оскол"
+  },
+  {
+    "key": "3",
+    "customer": "Salamander",
+    "cargo": "Правые шнурки",
+    "departure": "Мытищи",
+    "arrival": "Мурино"
+  },
+  {
+    "key": "4",
+    "customer": "МостТрест",
+    "cargo": "Чугунный мост",
+    "departure": "Казань",
+    "arrival": "Омск"
+  },
+  {
+    "key": "5",
+    "customer": "Автоваз",
+    "cargo": "Жесть",
+    "departure": "Челябинск",
+    "arrival": "Тольяти"
+  }
+]

@@ -1,0 +1,11 @@
+@import "~antd/dist/antd.css";
+
+.App {
+  text-align: center;
+}
+
+.sider {
+  background-color: #ccc;
+  max-width: min-content !important;
+  flex: 1 2 auto !important;
+}
