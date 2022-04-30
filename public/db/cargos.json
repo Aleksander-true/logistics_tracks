@@ -29,9 +29,51 @@
   },
   {
     "key": "5",
-    "customer": "Автоваз",
-    "cargo": "Жесть",
-    "departure": "Саранск",
-    "arrival": "Псков"
+    "customer": "Лукойл",
+    "cargo": "Керосин",
+    "departure": "Великие Луки",
+    "arrival": "Раменское"
+  },
+  {
+    "key": "6",
+    "customer": "Север",
+    "cargo": "Фольга",
+    "departure": "Череповец",
+    "arrival": "Коломна"
+  },
+  {
+    "key": "7",
+    "customer": "Комус",
+    "cargo": "Туалетная бумага",
+    "departure": "Воронеж",
+    "arrival": "Муром"
+  },
+  {
+    "key": "8",
+    "customer": "1С",
+    "cargo": "Дискеты",
+    "departure": "Тула",
+    "arrival": "Тамбов"
+  },
+  {
+    "key": "9",
+    "customer": "Ашан",
+    "cargo": "Макароны",
+    "departure": "Вологда",
+    "arrival": "Брянск"
+  },
+  {
+    "key": "10",
+    "customer": "Камаз",
+    "cargo": "Катафоты",
+    "departure": "Владимир",
+    "arrival": "Мичуринск"
+  },
+  {
+    "key": "11",
+    "customer": "Ривгошь",
+    "cargo": "Штукатурка",
+    "departure": "Санкт Петербург",
+    "arrival": "Курск"
   }
 ]

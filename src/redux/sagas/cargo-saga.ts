@@ -1,11 +1,13 @@
 import { takeEvery, put, call } from "redux-saga/effects";
 import { ACTIONS } from "../constants";
-import { getCargoData } from "../../api/index";
-import { setCargoData } from "../actions/main";
+import { getCargoData, getCityData } from "../../api/index";
+import { setCargoData, setCitiesData } from "../actions/main";
 
 function* handleCargoData() {
-  const data: CargoData[] = yield call(getCargoData);
-  yield put(setCargoData(data));
+  const cargos: CargoData[] = yield call(getCargoData);
+  const cityes: string[] = yield call(getCityData);
+  yield put(setCargoData(cargos));
+  yield put(setCitiesData(cityes));
 }
 
 export function* watchCargoSaga() {

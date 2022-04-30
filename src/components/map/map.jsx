@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Spin } from "antd";
 import {
   MapContainer,
   TileLayer,
@@ -21,6 +23,7 @@ const NULL_PATH_COORDS = [
 ];
 
 export default function Map() {
+  const [isLoading, setIsLoading] = useState("true");
   const cords = useAppSelector((store) => store.cords);
   const { arrival, departure, customer, cargo } = useAppSelector(
     (store) => store.route
@@ -31,30 +34,33 @@ export default function Map() {
   const lineOptions = { color: MAP_PATH_LINE_COLOR };
   const polyline = cords.path ? cords.path : NULL_PATH_COORDS;
   return (
-    <div className="map">
-      <MapContainer
-        className="map"
-        center={INIT_MAP_CENTER}
-        zoom={INIT_MAP_ZOOM}
-        scrollWheelZoom={false}
-      >
-        <TileLayer attribution={MAP_ATTRIBUTION} url={MAP_TILE_LAYER_URL} />
-        <Marker position={arrivalCoords}>
-          <Popup>
-            Отправление: <b>{arrival}</b> <br />
-            Заказчик: <i>{customer} </i> <br />
-            Груз: <i>{cargo}</i> <br />
-          </Popup>
-        </Marker>
-        <Marker position={departureCoords}>
-          <Popup>
-            Отправление: <b>{departure}</b> <br />
-            Заказчик: <i>{customer}</i> <br />
-            Груз: <i>{cargo}</i> <br />
-          </Popup>
-        </Marker>
-        <Polyline pathOptions={lineOptions} positions={polyline} />
-      </MapContainer>
-    </div>
+    <Spin spinning={isLoading}>
+      <div className="map">
+        <MapContainer
+          className="map"
+          center={INIT_MAP_CENTER}
+          zoom={INIT_MAP_ZOOM}
+          scrollWheelZoom={false}
+          whenReady={() => setIsLoading(false)}
+        >
+          <TileLayer attribution={MAP_ATTRIBUTION} url={MAP_TILE_LAYER_URL} />
+          <Marker position={arrivalCoords}>
+            <Popup>
+              Отправление: <b>{arrival}</b> <br />
+              Заказчик: <i>{customer} </i> <br />
+              Груз: <i>{cargo}</i> <br />
+            </Popup>
+          </Marker>
+          <Marker position={departureCoords}>
+            <Popup>
+              Отправление: <b>{departure}</b> <br />
+              Заказчик: <i>{customer}</i> <br />
+              Груз: <i>{cargo}</i> <br />
+            </Popup>
+          </Marker>
+          <Polyline pathOptions={lineOptions} positions={polyline} />
+        </MapContainer>
+      </div>
+    </Spin>
   );
 }

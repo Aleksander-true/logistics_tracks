@@ -18,6 +18,11 @@ type CargoAction = {
   data: CargoDate[];
 };
 
+type CitiesAction = {
+  type: keyof typeof ACTIONS;
+  data: string[];
+};
+
 type GeocodingHit = {
   country: string;
   countrycode: string;

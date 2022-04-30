@@ -23,3 +23,8 @@ export const patchCargoData = (data: CargoData[]) => ({
   type: ACTIONS.PATCH_CARGO_DATA,
   data,
 });
+
+export const setCitiesData = (data: string[]) => ({
+  type: ACTIONS.SET_CITIES_DATA,
+  data,
+});

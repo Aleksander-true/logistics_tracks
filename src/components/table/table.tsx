@@ -1,6 +1,5 @@
-import { Table, Select } from "antd";
+import { Table, Select, Spin } from "antd";
 import { useEffect, useState } from "react";
-import { cities } from "../../db/cities";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   getCargoData,
@@ -18,7 +17,8 @@ const enum SelectType {
 
 export default function SideTable() {
   const curentRoute = useAppSelector((store) => store.route);
-  const data = useAppSelector((store) => store.cargo);
+  const cities = useAppSelector((store) => store.cities);
+  const cargo = useAppSelector((store) => store.cargo);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export default function SideTable() {
   };
 
   return (
-    <>
+    <Spin spinning={cargo.length <= 0}>
       <Table
         rowSelection={{ type: "radio", ...rowSelection }}
         onRow={(record: CargoData) => ({
@@ -109,8 +109,9 @@ export default function SideTable() {
           },
         })}
         columns={columns}
-        dataSource={data}
+        dataSource={cargo}
+        pagination={{ defaultPageSize: 6 }}
       />
-    </>
+    </Spin>
   );
 }
