@@ -1,13 +1,12 @@
 import { Table, Select } from "antd";
-import { Key } from "antd/lib/table/interface";
 import { useEffect, useState } from "react";
 import { cities } from "../../db/cities";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   getCargoData,
   patchCargoData,
   setCurrentRoute,
 } from "../../redux/actions/main";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 const { Option } = Select;
 
@@ -17,7 +16,6 @@ export default function SideTable() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("useEffect", data);
     dispatch(getCargoData());
   }, [dispatch]);
 
@@ -106,8 +104,6 @@ export default function SideTable() {
         columns={columns}
         dataSource={data}
       />
-      <h2>departure {curentRoute.departure}</h2>
-      <h2>arrival {curentRoute.arrival}</h2>
     </>
   );
 }

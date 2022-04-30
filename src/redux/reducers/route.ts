@@ -8,10 +8,7 @@ const initialState = {
   arrival: "",
 };
 
-const route = (
-  state = initialState,
-  { type, data }: RouteAction
-): CargoData => {
+const route = (state = initialState, { type, data }: RouteAction) => {
   switch (type) {
     case ACTIONS.SET_CURRENT_ROUTE:
       return { ...data };

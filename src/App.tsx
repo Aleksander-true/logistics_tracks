@@ -2,6 +2,7 @@ import { Layout } from "antd";
 import Sider from "antd/lib/layout/Sider";
 import { Content } from "antd/lib/layout/layout";
 import SideTable from "./components/table/table";
+import Map from "./components/map/map";
 import "./App.css";
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
           <SideTable />
         </Sider>
         <Layout>
-          <Content>Content</Content>
+          <Content>
+            <Map />
+          </Content>
         </Layout>
       </Layout>
     </>

@@ -5,6 +5,11 @@ export const setCurrentRoute = (data: CargoData) => ({
   data,
 });
 
+export const setCurrentCords = (data: RouteCords) => ({
+  type: ACTIONS.SET_CURRENT_CORDS,
+  data,
+});
+
 export const getCargoData = () => ({
   type: ACTIONS.GET_CARGO_DATA,
 });

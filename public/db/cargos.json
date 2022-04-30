@@ -4,34 +4,34 @@
     "customer": "Coca-Cola",
     "cargo": "Чёрный порошок",
     "departure": "Москва",
-    "arrival": "Рязань"
+    "arrival": "Сочи"
   },
   {
     "key": "2",
     "customer": "Газпром",
     "cargo": "Жидкий азот",
-    "departure": "Новый Уренгой",
-    "arrival": "Старый Оскол"
+    "departure": "Тверь",
+    "arrival": "Тула"
   },
   {
     "key": "3",
     "customer": "Salamander",
     "cargo": "Правые шнурки",
     "departure": "Мытищи",
-    "arrival": "Мурино"
+    "arrival": "Брянск"
   },
   {
     "key": "4",
     "customer": "МостТрест",
     "cargo": "Чугунный мост",
-    "departure": "Казань",
-    "arrival": "Омск"
+    "departure": "Чебоксары",
+    "arrival": "Великий Новгород"
   },
   {
     "key": "5",
     "customer": "Автоваз",
     "cargo": "Жесть",
-    "departure": "Челябинск",
-    "arrival": "Тольяти"
+    "departure": "Саранск",
+    "arrival": "Псков"
   }
 ]
