@@ -7,8 +7,14 @@ import {
   patchCargoData,
   setCurrentRoute,
 } from "../../redux/actions/main";
+import "./table.css";
 
 const { Option } = Select;
+
+const enum SelectType {
+  DEPARTURE = "departure",
+  ARRIVAL = "arrival",
+}
 
 export default function SideTable() {
   const curentRoute = useAppSelector((store) => store.route);
@@ -19,14 +25,14 @@ export default function SideTable() {
     dispatch(getCargoData());
   }, [dispatch]);
 
-  const selectChange = (value: string, type: "departure" | "arrival") => {
+  const selectChange = (value: string, type: SelectType) => {
     let data: CargoData;
     switch (type) {
-      case "departure":
+      case SelectType.DEPARTURE:
         data = { ...curentRoute, departure: value };
         break;
 
-      case "arrival":
+      case SelectType.ARRIVAL:
         data = { ...curentRoute, arrival: value };
         break;
     }
@@ -34,9 +40,10 @@ export default function SideTable() {
     dispatch(setCurrentRoute(data));
   };
 
-  const renderSelect = (defaultCity: string, type: "departure" | "arrival") => (
+  const renderSelect = (defaultCity: string, type: SelectType) => (
     <Select
       defaultValue={defaultCity}
+      className="select"
       style={{ width: 120 }}
       onChange={(value) => selectChange(value, type)}
     >
@@ -66,13 +73,13 @@ export default function SideTable() {
       title: "Отправление",
       dataIndex: "departure",
       key: "departure",
-      render: (city: string) => renderSelect(city, "departure"),
+      render: (city: string) => renderSelect(city, SelectType.DEPARTURE),
     },
     {
       title: "Назначение",
       key: "arrival",
       dataIndex: "arrival",
-      render: (city: string) => renderSelect(city, "arrival"),
+      render: (city: string) => renderSelect(city, SelectType.ARRIVAL),
     },
   ];
 

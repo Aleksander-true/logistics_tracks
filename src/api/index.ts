@@ -1,25 +1,21 @@
-export const getLatestNews = async (searchQuery: string) => {
-  console.log(searchQuery);
-  const res = await fetch(
-    `https://hn.algolia.com/api/v1/search?query=${searchQuery}&hitsPerPage=10&page=0`
-  );
-  return await res.json();
-};
+import { openNotification } from "../components/notification/notification";
+import { BASE_GEOCODE_URL, BASE_ROUTE_URL } from "../constants";
 
 export const getCargoData = async (): Promise<CargoData[]> => {
   const res = await fetch("db/cargos.json");
-  console.log("responce", res);
   const out = await res.json();
-  console.log("out", out);
   return out;
 };
 
 const API_KEY = "b621f408-22ce-421a-854c-43ac71865504";
 
-export const getCoordinates = async (city: string): Promise<GeocodingRes> => {
-  const url = `https://graphhopper.com/api/1/geocode?q=${city}&key=${API_KEY}`;
-  const res = await fetch(url);
-  return await res.json();
+export const getCoordinates = async (
+  city: string
+): Promise<GeocodingRes | null> => {
+  const url = new URL(BASE_GEOCODE_URL);
+  url.searchParams.set("q", city);
+  url.searchParams.set("key", API_KEY);
+  return api.get(url.href);
 };
 
 export const getRoute = async ({
@@ -37,8 +33,47 @@ export const getRoute = async ({
     calc_points: true,
     points_encoded: false,
   });
-  console.log("body", body);
-  const url = `https://graphhopper.com/api/1/route?key=${API_KEY}`;
-  const res = await fetch(url, { method, headers, body });
-  return await res.json();
+  const url = new URL(BASE_ROUTE_URL);
+  url.searchParams.set("key", API_KEY);
+  return api.post(url.href, { method, headers, body });
+};
+
+const api = {
+  async get(url: string) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        return await res.json();
+      } else {
+        openNotification({
+          message: `Ошибка ${res.statusText} `,
+          description: "Попробуйте позже",
+        });
+        return Promise.resolve(null);
+      }
+    } catch (e: any) {
+      const { message } = e;
+      openNotification({ message });
+      return Promise.resolve(null);
+    }
+  },
+
+  async post(url: string, options: RequestInit) {
+    try {
+      const res = await fetch(url, options);
+      if (res.ok) {
+        return await res.json();
+      } else {
+        openNotification({
+          message: `Ошибка ${res.statusText} `,
+          description: "Попробуйте позже",
+        });
+        return Promise.resolve(null);
+      }
+    } catch (e: any) {
+      const { message } = e;
+      openNotification({ message });
+      return Promise.resolve(null);
+    }
+  },
 };
