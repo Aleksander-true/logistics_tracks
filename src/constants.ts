@@ -11,3 +11,4 @@ export const MAP_PATH_LINE_COLOR = "blue";
 /**API */
 export const BASE_GEOCODE_URL = "https://graphhopper.com/api/1/geocode";
 export const BASE_ROUTE_URL = "https://graphhopper.com/api/1/route";
+export const API_KEY = "b621f408-22ce-421a-854c-43ac71865504";

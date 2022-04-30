@@ -1,5 +1,5 @@
 import { openNotification } from "../components/notification/notification";
-import { BASE_GEOCODE_URL, BASE_ROUTE_URL } from "../constants";
+import { API_KEY, BASE_GEOCODE_URL, BASE_ROUTE_URL } from "../constants";
 
 export const getCargoData = async (): Promise<CargoData[]> => {
   return api.get("db/cargos.json");
@@ -8,8 +8,6 @@ export const getCargoData = async (): Promise<CargoData[]> => {
 export const getCityData = async (): Promise<CargoData[]> => {
   return api.get("db/cities.json");
 };
-
-const API_KEY = "b621f408-22ce-421a-854c-43ac71865504";
 
 export const getCoordinates = async (
   city: string
